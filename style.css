@@ -3,6 +3,7 @@
     --bkg-color: rgb(242, 242, 242);
     --dark-blue-1: #1f3073;
     --blue-1: #356FB6;
+    --blue-2: rgb(0, 169, 224);
 }
 
 
@@ -81,23 +82,27 @@ header img {
     font-size: 22px;
     width: 100px;
     margin-top: 45px;
+    border-radius: 5px;
 }
 
 #main-nav #logout {
     margin-left: 120px;
     font-size: 16px;
     padding: 5px;
+    border-radius: 0;
+    border-bottom: 3px solid var(--bkg-color);
+    background-color: var(--bkg-color);
+    color: var(--text-color);
+    transition: border 0.1s linear;
 }
 
 #main-nav a:hover {
     background-color: var(--blue-1);
     color: var(--bkg-color);
-    border-radius: 5px;
 }
 
 #main-nav #logout:hover {
-    background-color: orange;
-    color: var(--text-color);
+    border-bottom: 3px solid orange;
 }
 
 #main-nav a:active {
@@ -111,22 +116,42 @@ header img {
     grid-column: 1 / 2;
     position: fixed;
     top: 100px;
-    height: 100vh;
+    height: 94vh;
     width: 200px;
     background-color: var(--bkg-color);
     overflow: scroll;
 }
 
 #sidebar a {
+    position: relative;
     margin: 30px 0;
     padding: 10px;
     font-size: 18px;
     border-bottom: 3px solid var(--bkg-color);
-    transition: border 0.2s linear;
+    transition: 0.3s ease-in-out;
+    z-index: 100;
+}
+
+#sidebar a::after {
+    content: "";
+    position: absolute;
+    width: 0px;
+    height: auto;
+    transition: 0.3s ease-in-out;
+    left: 20px;
+    bottom: -5px;
+    border-bottom: 3px solid var(--text-color);
+    background-color: var(--blue-2);
+    z-index: -50;
+}
+
+#sidebar a:hover::after {
+    width: calc(100% + 9px);
+    height: calc(100% + 9px);
 }
 
 #sidebar a:hover {
-    border-bottom: 3px solid var(--text-color);
+    color: var(--bkg-color);
 }
 
 #sidebar::-webkit-scrollbar {
